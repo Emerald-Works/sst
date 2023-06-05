@@ -5341,6 +5341,13 @@ aws-cdk@1.114.0:
     yaml "1.10.2"
     yargs "^16.2.0"
 
+aws-cdk@^2.82.0:
+  version "2.82.0"
+  resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-2.82.0.tgz#7e1bc0715b4f5a59f4d19595701f1206496b571a"
+  integrity sha512-4uAhKN8HMdxxM10Th8aMQJLSINO6evYV9UKTPL0hbVQ6dh6+i5LbSejcvDRw0HfBoP6qV1LNV8P8XGLYIC3tyQ==
+  optionalDependencies:
+    fsevents "2.3.2"
+
 aws-sdk@^2.761.0, aws-sdk@^2.848.0:
   version "2.864.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.864.0.tgz#934d526e6de5d6e5f7c4aa9258e3be60ee149e22"
@@ -8040,7 +8047,7 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
-fsevents@^2.1.2, fsevents@~2.3.1:
+fsevents@2.3.2, fsevents@^2.1.2, fsevents@~2.3.1:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==

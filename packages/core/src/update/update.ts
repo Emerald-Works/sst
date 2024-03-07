@@ -16,7 +16,7 @@ export function run(opts: RunOpts) {
 
   for (const pkg of [
     "@serverless-stack/cli",
-    "@serverless-stack/resources",
+    "serverless-stack-mt-resources",
   ] as const) {
     if (!opts.verbose) console.log(chalk.gray("Updating", pkg));
     manager.add({

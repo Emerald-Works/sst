@@ -1471,26 +1471,34 @@ async function destroyStack(cdkOptions, stackState) {
   return { status };
 }
 
+function findLastNodeModulesDirSync() {
+  let currentDir = process.cwd();
+
+  while (currentDir !== path.parse(currentDir).root) {
+      const potentialNodeModulesDir = path.join(currentDir, 'node_modules', "aws-cdk", "bin", "cdk");
+      if (fs.existsSync(potentialNodeModulesDir)) {
+          return path.join(currentDir, 'node_modules');
+      }
+
+      currentDir = path.dirname(currentDir);
+  }
+
+  throw new Error('No node_modules directory found.');
+}
 ////////////////////////
 // Util functions
 ////////////////////////
-
 /**
- * Finds the path to the CDK package executable by converting the file path of:
- * /Users/spongebob/serverless-stack/node_modules/aws-cdk/lib/index.js
- * to:
- * /Users/spongebob/serverless-stack/node_modules/.bin/cdk
- */
+* Finds the path to the CDK package executable by converting the file path of:
+* /Users/spongebob/serverless-stack/node_modules/aws-cdk/lib/index.js
+* to:
+* /Users/spongebob/serverless-stack/node_modules/.bin/cdk
+*/
 function getCdkBinPath() {
-  const pkg = "aws-cdk";
-  const filePath = require.resolve(pkg);
-  const matches = filePath.match(/(^.*[/\\]node_modules)[/\\].*$/);
-
-  if (matches === null || !matches[1]) {
-    throw new Error(`There was a problem finding ${pkg}`);
-  }
-
-  return path.join(matches[1], "aws-cdk", "bin", "cdk");
+  //get the last node_module folder
+  const nodeModulesDir = findLastNodeModulesDirSync();
+  console.log(nodeModulesDir);
+  return path.join(nodeModulesDir, "aws-cdk", "bin", "cdk");
 }
 
 function buildCDKSpawnEnv(cdkOptions) {
